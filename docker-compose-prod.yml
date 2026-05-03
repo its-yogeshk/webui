@@ -1,0 +1,10 @@
+version: '2'
+services:
+  backend:
+    image: ghcr.io/revolvebypreethi/website:production
+    ports:
+      - '4021:4021'
+    restart: always
+    environment:
+      - NODE_EN=production
+      - PORT=4021

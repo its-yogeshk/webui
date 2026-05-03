@@ -1,0 +1,10 @@
+version: '2'
+services:
+  backend:
+    image: ghcr.io/revolvebypreethi/website:staging
+    ports:
+      - '4022:4022'
+    restart: always
+    environment:
+      - NODE_EN=staging
+      - PORT=4022
