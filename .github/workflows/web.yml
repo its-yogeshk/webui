@@ -23,17 +23,15 @@ jobs:
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
       
       - name: GCloud Config
-        run: gcloud auth configure-docker asia-south2-docker.pkg.dev
+        run: gcloud auth configure-docker ${{ vars.REGION }}-docker.pkg.dev
 
-      # - name: build and push docker image
-      #   run: |
-      #     echo "NEXT_PUBLIC_SECRET_KEY=${{ vars.NEXT_PUBLIC_SECRET_KEY }}" >> .env
-      #     echo "NEXT_PUBLIC_BASE_URL_BACKEND_ONE=${{ vars.NEXT_PUBLIC_BASE_URL_BACKEND_ONE_PROD }}" >> .env
-      #     echo "NEXT_PUBLIC_IMAGE_PATH_URL=${{ vars.NEXT_PUBLIC_IMAGE_PATH_URL }}" >> .env
-      #     echo "NEXT_PUBLIC_ENCRYPTION_SECRET=${{ vars.NEXT_PUBLIC_ENCRYPTION_SECRET }}" >> .env
+      - name: build and push docker image
+        run: |
+          echo "NEXT_PUBLIC_SECRET_KEY=${{ vars.NEXT_PUBLIC_SECRET_KEY }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL_BACKEND_ONE=${{ vars.NEXT_PUBLIC_BASE_URL_BACKEND_ONE_PROD }}" >> .env
+          echo "NEXT_PUBLIC_IMAGE_PATH_URL=${{ vars.NEXT_PUBLIC_IMAGE_PATH_URL }}" >> .env
+          echo "NEXT_PUBLIC_ENCRYPTION_SECRET=${{ vars.NEXT_PUBLIC_ENCRYPTION_SECRET }}" >> .env
 
-      #     export CR_PAT=${{ secrets.TOKEN }}
-      #     echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
-      #     docker pull ghcr.io/${GITHUB_REPOSITORY}:production || true
-      #     docker build --tag ghcr.io/${GITHUB_REPOSITORY}:production .
-      #     docker push ghcr.io/${GITHUB_REPOSITORY}:production
+          docker pull ${{ vars.GAR_LOCATION }}:dev || true
+          docker build --tag ${{ vars.GAR_LOCATION }}:dev .
+          docker push ${{ vars.GAR_LOCATION }}:dev
