@@ -32,6 +32,6 @@ jobs:
           echo "NEXT_PUBLIC_IMAGE_PATH_URL=${{ vars.NEXT_PUBLIC_IMAGE_PATH_URL }}" >> .env
           echo "NEXT_PUBLIC_ENCRYPTION_SECRET=${{ vars.NEXT_PUBLIC_ENCRYPTION_SECRET }}" >> .env
 
-          docker pull ${{ vars.GAR_LOCATION }}:dev || true
-          docker build --tag ${{ vars.GAR_LOCATION }}:dev .
-          docker push ${{ vars.GAR_LOCATION }}:dev
+          docker pull ${{ vars.GAR_LOCATION }}/${{ github.repository }}:dev || true
+          docker build --tag ${{ vars.GAR_LOCATION }}/${{ github.repository }}:dev .
+          docker push ${{ vars.GAR_LOCATION }}/${{ github.repository }}:dev
