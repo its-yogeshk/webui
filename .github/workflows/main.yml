@@ -1,7 +1,7 @@
-name: Web Production
+name: Package on GitHub
 on:
   push:
-    branches: main
+    branches: dev
   workflow_dispatch:
     
 jobs:
