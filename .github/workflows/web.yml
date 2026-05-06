@@ -2,6 +2,7 @@ name: Web Staging
 on:
   push:
     branches: [dev, main]
+    paths: "scr/**"
   workflow_dispatch:
     
 permissions:
