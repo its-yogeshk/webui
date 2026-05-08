@@ -17,7 +17,6 @@ jobs:
   inputs_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: print input in pipeline
-        run: echo "Environment-Name: ${{ inputs.environment }}"
+      - uses: actions/upload-artifact@v4
 
 
