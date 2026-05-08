@@ -1,0 +1,23 @@
+name: Inputs actions
+on:
+  workflow_dispatch:
+    inputs:
+      environment: 
+        description: 'Select Environment'
+        required: true
+        default: 'qa'
+        type: choice
+        options:
+          - dev
+          - qa
+          - uat
+          - prod
+
+jobs:
+  inputs_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print input in pipeline
+        run: echo "Environment Name: &{{ github.events.inputs.environment }}"
+
+
