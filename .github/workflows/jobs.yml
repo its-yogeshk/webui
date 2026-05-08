@@ -1,0 +1,36 @@
+name: Jobs in GitHub
+on:
+  push:
+    branches: dev
+  workflow_dispatch:
+    
+jobs:
+  job1:
+    runs-on: ubuntu-latest   
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create build folder
+        run: |
+          mkdir build
+          cp -r src/* build/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-publish
+          path: build
+
+  job2: 
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print Hello
+        run: echo "Hello World!"
+
+
+
+      
+      
