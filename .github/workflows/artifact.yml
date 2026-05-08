@@ -1,0 +1,20 @@
+name: Artifact on GitHub
+on:
+  push:
+    branches: dev
+  workflow_dispatch:
+    
+jobs:
+  artifact:
+    runs-on: ubuntu-latest   
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create build folder
+        run: |
+          mkdir build
+          cp -r scr/* build/
+
+      
+      
