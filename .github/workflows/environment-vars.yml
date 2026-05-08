@@ -14,7 +14,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest   
-    environment: dev
+    environment: ${{ GITHUB_REF_NAME }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
