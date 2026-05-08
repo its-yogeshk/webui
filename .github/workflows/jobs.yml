@@ -23,7 +23,7 @@ jobs:
           path: build
 
   job2: 
-    depends-on: job1
+    needs: job1
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
