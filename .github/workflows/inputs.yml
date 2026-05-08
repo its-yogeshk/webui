@@ -18,6 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print input in pipeline
-        run: echo "Environment-Name: ${{ github.event.inputs.environment }}"
+        run: echo "Environment-Name: ${{ inputs.environment }}"
 
 
