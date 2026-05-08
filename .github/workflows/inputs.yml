@@ -12,6 +12,10 @@ on:
           - qa
           - uat
           - prod
+      version:
+        description: 'App Version'
+        deafult: '0.0.1'
+        type: string
 
 jobs:
   inputs_deploy:
